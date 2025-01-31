@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-over Prescription Translator</title>
+    <link rel="stylesheet" href="voice.css">
+    <script src="voice.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Voice-over AI Agent for Prescription Translation</h1>
+            <p>Speak the prescription to have it translated and read aloud.</p>
+        </header>
+        
+        <!-- Prescription Input Section -->
+        <div class="input-section">
+            <img src="images/microphone.png" alt="Microphone" class="microphone-icon">
+            <button class="button" onclick="startRecognition()">Start Speaking</button>
+            <p id="patientPrescription" class="prescription-text">Prescription: </p>
+        </div>
+
+        <!-- Translate & Speak Section -->
+        <div class="translation-section">
+            <img src="images/translate.png" alt="Translate" class="translate-icon">
+            <button class="button" onclick="translateAndSpeak()">Translate & Speak Prescription</button>
+            <p id="translation" class="translation-text">Translated Prescription: </p>
+        </div>
+    </div>
+</body>
+</html>

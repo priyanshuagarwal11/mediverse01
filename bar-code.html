@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Prescription with Barcode</title>
+    <link rel="stylesheet" href="barcode.css"> <!-- Add your custom styles here -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+    <div class="prescription-container">
+        <h1>Digital Prescription with Barcode</h1>
+
+        <!-- Patient Information Section -->
+        <div class="patient-info">
+            <h2>Patient Information</h2>
+            <label for="name"><strong>Name:</strong></label>
+            <input type="text" id="name" name="name" value="John Doe" required>
+
+            <label for="age"><strong>Age:</strong></label>
+            <input type="number" id="age" name="age" value="45" required>
+
+            <label for="gender"><strong>Gender:</strong></label>
+            <select id="gender" name="gender" required>
+                <option value="Male" selected>Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="phone"><strong>Phone Number:</strong></label>
+            <input type="tel" id="phone" name="phone" value="9876543210" required>
+        </div>
+
+        <!-- Prescription Details Section -->
+        <div class="prescription-details">
+            <h2>Prescription</h2>
+            <label for="med1"><strong>Medication 1:</strong></label>
+            <input type="text" id="med1" name="med1" value="Paracetamol - 500mg" required>
+
+            <label for="med1-frequency"><strong>Frequency (per day):</strong></label>
+            <input type="number" id="med1-frequency" name="med1-frequency" value="4" required>
+
+            <label for="med2"><strong>Medication 2:</strong></label>
+            <input type="text" id="med2" name="med2" value="Amoxicillin - 250mg" required>
+
+            <label for="med2-frequency"><strong>Frequency (per day):</strong></label>
+            <input type="number" id="med2-frequency" name="med2-frequency" value="2" required>
+
+            <label for="med3"><strong>Medication 3:</strong></label>
+            <input type="text" id="med3" name="med3" value="Vitamin C - 1000mg" required>
+
+            <label for="med3-frequency"><strong>Frequency (per day):</strong></label>
+            <input type="number" id="med3-frequency" name="med3-frequency" value="1" required>
+        </div>
+
+        <!-- Disease Details Section -->
+        <div class="disease-details">
+            <h2>Disease Information</h2>
+            <label for="disease-name"><strong>Disease Name:</strong></label>
+            <input type="text" id="disease-name" name="disease-name" value="Pneumonia" required>
+
+            <label for="symptoms"><strong>Symptoms:</strong></label>
+            <input type="text" id="symptoms" name="symptoms" value="Cough, Fever, Difficulty Breathing, Fatigue" required>
+
+            <label for="general-knowledge"><strong>General Knowledge:</strong></label>
+            <textarea id="general-knowledge" name="general-knowledge" required>Pneumonia is an infection that inflames the air sacs in one or both lungs. It can cause mild to severe illness, and it's important to treat it promptly to avoid complications.</textarea>
+
+            <label for="time-period"><strong>Time Period:</strong></label>
+            <input type="text" id="time-period" name="time-period" value="7-14 days, depending on the severity and treatment" required>
+
+            <label for="disease-stage"><strong>Stage:</strong></label>
+            <input type="text" id="disease-stage" name="disease-stage" value="Acute Stage (Currently Under Treatment)" required>
+        </div>
+
+        <!-- Barcode Section for Medication Details -->
+        <div class="barcode-section">
+            <h2>Medication Barcode</h2>
+            <label for="barcode-text"><strong>Medication Code:</strong></label>
+            <input type="text" id="barcode-text" name="barcode-text" value="123456789012" required>
+            
+            <svg id="barcode"></svg>
+            <script>
+                JsBarcode("#barcode", document.getElementById("barcode-text").value, {
+                    format: "EAN13",
+                    lineColor: "#0d0d0d",
+                    width: 2,
+                    height: 40,
+                    displayValue: true
+                });
+            </script>
+        </div>
+
+        <!-- Doctor Information Section -->
+        <div class="doctor-info">
+            <h2>Doctor Information</h2>
+            <label for="doctor-name"><strong>Doctor's Name:</strong></label>
+            <input type="text" id="doctor-name" name="doctor-name" value="Dr. Smith" required>
+
+            <label for="specialization"><strong>Specialization:</strong></label>
+            <input type="text" id="specialization" name="specialization" value="General Physician" required>
+
+            <label for="clinic"><strong>Clinic:</strong></label>
+            <input type="text" id="clinic" name="clinic" value="HealthCare Clinic, XYZ Street" required>
+        </div>
+
+        <!-- Print Button -->
+        <button onclick="window.print()">Print Prescription</button>
+    </div>
+</body>
+</html>

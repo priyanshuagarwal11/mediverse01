@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f7fc;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 400px;
+            height: 500px;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chat-box {
+            height: 80%;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+            padding-right: 10px;
+        }
+
+        .input-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-box input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .input-box button {
+            width: 15%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-box button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #dcf8c6;
+            text-align: right;
+        }
+
+        .ai-message {
+            background-color: #f1f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+
+        // Send a message
+        async function sendMessage() {
+            const userMessage = userInput.value;
+            if (!userMessage) return;
+
+            // Display user's message
+            displayMessage(userMessage, 'user');
+
+            // Clear the input field
+            userInput.value = '';
+
+            // Send the message to the OpenAI API
+            const aiResponse = await getAIResponse(userMessage);
+
+            // Display AI's response
+            displayMessage(aiResponse, 'ai');
+        }
+
+        // Display message in the chat box
+        function displayMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
+            messageDiv.innerText = message;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+        }
+
+        // Fetch AI response using OpenAI API
+        async function getAIResponse(message) {
+            const apiKey = 'YOUR_OPENAI_API_KEY'; // Replace with your OpenAI API key
+            const endpoint = 'https://api.openai.com/v1/completions';
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: 'text-davinci-003', // or gpt-3.5-turbo
+                    prompt: message,
+                    max_tokens: 150,
+                    temperature: 0.9
+                })
+            });
+
+            const data = await response.json();
+            return data.choices[0].text.trim();
+        }
+    </script>
+</body>
+</html>

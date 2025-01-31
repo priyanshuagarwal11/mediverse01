@@ -1,0 +1,76 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.training-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #2196f3;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    color: #555;
+}
+
+.training-overview, .support-system, .contact-support {
+    margin-bottom: 30px;
+}
+
+.training-overview h2, .support-system h2, .contact-support h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.training-overview p, .support-system p, .contact-support p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.training-overview ul, .support-system ul {
+    list-style-type: disc;
+    margin-left: 40px;
+}
+
+.training-overview li, .support-system li {
+    font-size: 18px;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+footer button:hover {
+    background-color: #1976d2;
+}

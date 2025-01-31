@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric Authentication</title>
+    <link rel="stylesheet" href="biometric-style.css">
+    <script>
+        // Simulate Biometric Authentication
+        function verifyBiometric() {
+            // Simulate successful biometric verification
+            alert("Biometric Verification Successful!");
+        }
+
+        // Simulate scanning process with a visual effect
+        function startScanning() {
+            document.getElementById("scanner").classList.add("scanning");
+            setTimeout(verifyBiometric, 3000); // Simulate a 3-second scan before successful verification
+        }
+    </script>
+</head>
+<body>
+    <div class="biometric-container">
+        <h1>Biometric Authentication</h1>
+        <p>Please scan your fingerprint to verify your identity.</p>
+
+        <!-- Simulate Fingerprint Scanner -->
+        <div class="fingerprint-scanner" id="scanner" onclick="startScanning()">
+            <div class="scanner-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJR9KYRsbI84EZLvxI9qLsDlHDsBt7N4tzGQ&s" alt="Fingerprint Scanner" />
+            </div>
+            <div class="scanner-text">
+                <p>Click to Scan</p>
+            </div>
+        </div>
+
+        <!-- Optional: A loading animation when waiting for biometric scan -->
+        <div class="loading" id="loading" style="display: none;">
+            <p>Scanning...</p>
+        </div>
+    </div>
+</body>
+</html>

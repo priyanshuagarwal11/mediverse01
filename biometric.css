@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.biometric-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.fingerprint-scanner {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    border: 3px solid #4CAF50;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.fingerprint-scanner:hover {
+    transform: scale(1.05);
+}
+
+.scanner-image {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scanner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the image is displayed correctly inside the circle */
+}
+
+.scanner-text {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.scanner-text p {
+    margin: 0;
+}
+
+/* Simulate scanning effect */
+.scanning {
+    background-color: #3e8e41;
+    animation: scanEffect 3s infinite;
+}
+
+@keyframes scanEffect {
+    0% {
+        background-color: #4CAF50;
+    }
+    50% {
+        background-color: #388e3c;
+    }
+    100% {
+        background-color: #4CAF50;
+    }
+}
+
+.loading {
+    font-size: 18px;
+    color: #999;
+}
